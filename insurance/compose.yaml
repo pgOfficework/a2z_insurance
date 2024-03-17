@@ -11,6 +11,8 @@ services:
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=admin
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - '5433:5433'
           
   db:
     image: 'postgres:16.2'

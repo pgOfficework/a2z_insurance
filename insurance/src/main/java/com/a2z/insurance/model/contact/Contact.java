@@ -1,6 +1,5 @@
 package com.a2z.insurance.model.contact;
 
-import java.sql.Date;
 
 
 import jakarta.persistence.Column;
