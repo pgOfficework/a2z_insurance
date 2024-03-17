@@ -2,8 +2,24 @@ services:
   mongodb:
     image: 'mongo:latest'
     environment:
+<<<<<<< Updated upstream
       - 'MONGO_INITDB_DATABASE=mydatabase'
       - 'MONGO_INITDB_ROOT_PASSWORD=secret'
       - 'MONGO_INITDB_ROOT_USERNAME=root'
     ports:
       - '27017'
+=======
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5433/a2z_insurance
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - '5433:5433'
+          
+  db:
+    image: 'postgres:16.2'
+    container_name: a2z_insurance
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+>>>>>>> Stashed changes

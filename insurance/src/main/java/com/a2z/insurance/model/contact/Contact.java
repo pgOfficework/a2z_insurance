@@ -1,7 +1,10 @@
 package com.a2z.insurance.model.contact;
 
+<<<<<<< Updated upstream
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+=======
+>>>>>>> Stashed changes
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
