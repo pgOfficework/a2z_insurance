@@ -11,7 +11,7 @@ import com.a2z.insurance.repository.contact.ContactRepository;
 @Service
 public class ContactService{
 
-	
+	@Autowired
 	private ContactRepository contactRepository;
 	
 	@Autowired(required=false)
@@ -19,7 +19,7 @@ public class ContactService{
 		this.contactRepository=contactRepository;
 	}
 	
-	public Contact getContactByContactNumber(String contactNumber) {
+	public Object getContactByContactNumber(int contactNumber) {
 		System.out.println("contactNumber : "+contactNumber);
 		return contactRepository.getContactByContactNumber(contactNumber);
 	}
