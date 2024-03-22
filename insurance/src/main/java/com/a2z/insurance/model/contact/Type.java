@@ -13,9 +13,9 @@ import lombok.ToString;
 @ToString
 @Setter
 @Getter
-@Entity(name = "email_type")
-public class EmailType {
+@Entity(name = "type")
+public class Type {
     @Id
     private int id;
-    private String emailType;
+    private String type;
 }

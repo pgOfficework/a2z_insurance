@@ -6,7 +6,6 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,5 +36,8 @@ public class Contact {
 
 	@OneToMany(mappedBy = "contactNumber", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private Set<Emails> emails;
+
+	@OneToMany(mappedBy = "contactNumber", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	private Set<TelephonesNumbers> telephoneNumbers;
 
 }

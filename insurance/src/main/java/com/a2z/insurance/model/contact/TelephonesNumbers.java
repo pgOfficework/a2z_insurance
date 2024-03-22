@@ -16,15 +16,17 @@ import lombok.ToString;
 @ToString
 @Setter
 @Getter
-@Entity(name = "emails")
-public class Emails {
+@Entity(name="telephone_numbers")
+public class TelephonesNumbers {
     @Id
     private int id;
     private int contactNumber;
-    private int emailType;
-    private String email;
+    private long telephoneNumber;
+    private int countryDialCode;
+    private int telephoneNumberType;
 
-    @OneToOne
-    @JoinColumn(name = "emailType", referencedColumnName = "id", insertable = false, updatable = false, foreignKey = @jakarta.persistence.ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
+     @OneToOne
+    @JoinColumn(name = "telephoneNumberType", referencedColumnName = "id", insertable = false, updatable = false, foreignKey = @jakarta.persistence.ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
     private Type type;
+    
 }
