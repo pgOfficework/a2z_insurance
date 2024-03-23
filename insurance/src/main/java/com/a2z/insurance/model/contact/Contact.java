@@ -6,6 +6,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,21 +24,27 @@ public class Contact {
 	
 	@Id
 	long id;
-	private String fullName;
 	private String contactId;
-	private int contactNumber;
+	private long contactNumber;
 	private String firstName;
 	private String middleName;
+	private int title;
+	private int genderId;
+	private int nationalityId;
+	private int birthCountryId;
 	private String lastName;
 	private String dateOfBirth;
 
-	@OneToMany(mappedBy = "contactNumber", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@OneToMany(targetEntity = ContactBankAccounts.class,cascade = CascadeType.ALL)
+	@JoinColumn(name = "contactNumber", referencedColumnName = "contactNumber")
 	private Set<ContactBankAccounts> bankAccounts;
 
-	@OneToMany(mappedBy = "contactNumber", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@OneToMany(targetEntity = Emails.class,cascade = CascadeType.ALL)
+	@JoinColumn(name = "contactNumber", referencedColumnName = "contactNumber")
 	private Set<Emails> emails;
 
-	@OneToMany(mappedBy = "contactNumber", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@OneToMany(targetEntity = TelephonesNumbers.class,cascade = CascadeType.ALL)
+	@JoinColumn(name = "contactNumber", referencedColumnName = "contactNumber")
 	private Set<TelephonesNumbers> telephoneNumbers;
 
 }

@@ -19,14 +19,14 @@ import lombok.ToString;
 @Entity(name="telephone_numbers")
 public class TelephonesNumbers {
     @Id
-    private int id;
-    private int contactNumber;
+    private long id;
+    private long contactNumber;
     private long telephoneNumber;
     private int countryDialCode;
-    private int telephoneNumberType;
+    private int type;
 
      @OneToOne
-    @JoinColumn(name = "telephoneNumberType", referencedColumnName = "id", insertable = false, updatable = false, foreignKey = @jakarta.persistence.ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
-    private Type type;
+    @JoinColumn(name = "type", referencedColumnName = "id", insertable = false, updatable = false, foreignKey = @jakarta.persistence.ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
+    private Type telephoneNumberType;
     
 }

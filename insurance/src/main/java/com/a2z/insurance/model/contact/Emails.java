@@ -19,12 +19,12 @@ import lombok.ToString;
 @Entity(name = "emails")
 public class Emails {
     @Id
-    private int id;
-    private int contactNumber;
-    private int emailType;
+    private long id;
+    private long contactNumber;
+    private int type;
     private String email;
 
     @OneToOne
-    @JoinColumn(name = "emailType", referencedColumnName = "id", insertable = false, updatable = false, foreignKey = @jakarta.persistence.ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
-    private Type type;
+    @JoinColumn(name = "type", referencedColumnName = "id", insertable = false, updatable = false, foreignKey = @jakarta.persistence.ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
+    private Type emailType;
 }

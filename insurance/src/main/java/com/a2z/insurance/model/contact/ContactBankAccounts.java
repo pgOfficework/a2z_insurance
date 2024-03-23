@@ -18,7 +18,7 @@ import lombok.Setter;
 public class ContactBankAccounts {
     @Id
     private int id;
-    private int contactNumber;
+    private long contactNumber;
     private String bankName;
     private int countryCode;
     private String branchName;
