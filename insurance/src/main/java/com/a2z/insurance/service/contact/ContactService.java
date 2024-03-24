@@ -9,23 +9,18 @@ import com.a2z.insurance.model.contact.Contact;
 import com.a2z.insurance.repository.contact.ContactRepository;
 
 @Service
-public class ContactService {
+public class ContactService{
 
-	private ContactRepository contactRepository;
-<<<<<<< Updated upstream
-	private Contact contact;
-	
 	@Autowired
-=======
-
-	@Autowired(required = false)
->>>>>>> Stashed changes
+	private ContactRepository contactRepository;
+	
+	@Autowired(required=false)
 	public ContactService(ContactRepository contactRepository) {
-		this.contactRepository = contactRepository;
+		this.contactRepository=contactRepository;
 	}
-
-	public Contact getContactByContactNumber(String contactNumber) {
-		System.out.println("contactNumber : " + contactNumber);
+	
+	public Object getContactByContactNumber(int contactNumber) {
+		System.out.println("contactNumber : "+contactNumber);
 		return contactRepository.getContactByContactNumber(contactNumber);
 	}
 
