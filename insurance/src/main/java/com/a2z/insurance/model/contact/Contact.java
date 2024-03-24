@@ -3,11 +3,12 @@ package com.a2z.insurance.model.contact;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,9 +36,21 @@ public class Contact {
 	private String lastName;
 	private String dateOfBirth;
 
-	@OneToMany(targetEntity = ContactBankAccounts.class,cascade = CascadeType.ALL)
+	@OneToOne
+    @JoinColumn(name = "nationalityId", referencedColumnName = "code", insertable = false, updatable = false, foreignKey = @jakarta.persistence.ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
+    private Country nationality;
+
+	@OneToOne
+    @JoinColumn(name = "birthCountryId", referencedColumnName = "code", insertable = false, updatable = false, foreignKey = @jakarta.persistence.ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
+    private Country birthCountry;
+
+	@OneToOne
+    @JoinColumn(name = "genderId", referencedColumnName = "id", insertable = false, updatable = false, foreignKey = @jakarta.persistence.ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
+    private Gender gender;
+
+	@OneToMany(targetEntity = BankAccounts.class,cascade = CascadeType.ALL)
 	@JoinColumn(name = "contactNumber", referencedColumnName = "contactNumber")
-	private Set<ContactBankAccounts> bankAccounts;
+	private Set<BankAccounts> bankAccounts;
 
 	@OneToMany(targetEntity = Emails.class,cascade = CascadeType.ALL)
 	@JoinColumn(name = "contactNumber", referencedColumnName = "contactNumber")
@@ -46,5 +59,9 @@ public class Contact {
 	@OneToMany(targetEntity = TelephonesNumbers.class,cascade = CascadeType.ALL)
 	@JoinColumn(name = "contactNumber", referencedColumnName = "contactNumber")
 	private Set<TelephonesNumbers> telephoneNumbers;
+
+	@OneToMany(targetEntity = TelephonesNumbers.class,cascade = CascadeType.ALL)
+	@JoinColumn(name = "contactNumber", referencedColumnName = "contactNumber")
+	private Set<Address> addresses;
 
 }
