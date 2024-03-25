@@ -1,33 +1,28 @@
 package com.a2z.insurance.model.contact;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@Setter
-@Getter
+@Data
+@JsonIgnoreProperties(value = { "id", "type" })
 @Entity(name = "addresses")
 public class Address {
     @Id
-    long id;
-    long contact_number;
-    String house;
-    String street;
-    String city;
-    String postalCode;
-    String district;
-    String state_name;
-    int type;
+    private long id;
+    private long contact_number;
+    private String house;
+    private String street;
+    private String city;
+    private String postalCode;
+    private String district;
+    private String state_name;
+    private int type;
 
     @OneToOne
     @JoinColumn(name = "type", referencedColumnName = "id", insertable = false, updatable = false, foreignKey = @jakarta.persistence.ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
